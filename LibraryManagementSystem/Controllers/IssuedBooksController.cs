@@ -17,7 +17,7 @@ namespace LibraryManagementSystem.Controllers
             _context = context;
         }
 
-        // Issue a book to a user
+       
         [HttpPost("IssueBook")]
         public async Task<ActionResult> IssueBook(int bookId, int userId)
         {
@@ -42,7 +42,7 @@ namespace LibraryManagementSystem.Controllers
             return Ok("Book issued successfully.");
         }
 
-        // Return a book
+       
         [HttpPost("ReturnBook")]
         public async Task<ActionResult> ReturnBook(int issueId)
         {
@@ -65,14 +65,13 @@ namespace LibraryManagementSystem.Controllers
             return Ok("Book returned successfully.");
         }
 
-        // Track the total number of books issued
         [HttpGet("TotalIssued")]
         public async Task<ActionResult<int>> GetTotalBooksIssued()
         {
             return await _context.IssuedBooks.CountAsync();
         }
 
-        // Available copies for each book
+       
         [HttpGet("AvailableCopies/{bookId}")]
         public async Task<ActionResult<int>> GetAvailableCopies(int bookId)
         {
